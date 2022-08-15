@@ -4,7 +4,9 @@ import {
 	ColorSchemeProvider,
 	ColorScheme,
 } from "@mantine/core";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { UserProvider } from "./contexts/user";
+import { ChannelProvider } from "./contexts/channel";
 
 export function App(): JSX.Element {
 	const [colorScheme, setColorScheme] = useState<ColorScheme>(
@@ -17,6 +19,12 @@ export function App(): JSX.Element {
 		setColorScheme(newScheme);
 	};
 
+	useEffect(() => {
+		document.body.className = localStorage.scheme
+			? localStorage.scheme
+			: "light";
+	}, []);
+
 	return (
 		<ColorSchemeProvider
 			colorScheme={colorScheme}
@@ -27,7 +35,11 @@ export function App(): JSX.Element {
 				withGlobalStyles
 				withNormalizeCSS
 			>
-				<Home />
+				<UserProvider>
+					<ChannelProvider>
+						<Home />
+					</ChannelProvider>
+				</UserProvider>
 			</MantineProvider>
 		</ColorSchemeProvider>
 	);

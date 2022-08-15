@@ -4,13 +4,17 @@ import {
 	Navbar,
 	Header,
 	Footer,
-	Aside,
 	Text,
 	MediaQuery,
 	Burger,
 	useMantineTheme,
 } from "@mantine/core";
-import { ThemeSwitch } from "./ThemeSwitch";
+import { ThemeSwitch } from "./Shell/ThemeSwitch";
+import logo from "../assets/images/pp-mue.png";
+import { UserButton } from "./Shell/UserButton";
+import { NotrufButton } from "./Shell/NotrufButton";
+import { useUser } from "../contexts/user";
+import { DeafButton } from "./Shell/DeafButton";
 
 interface PropTypes {
 	children: JSX.Element;
@@ -19,6 +23,8 @@ interface PropTypes {
 export default function Shell(props: PropTypes) {
 	const theme = useMantineTheme();
 	const [opened, setOpened] = useState(false);
+	const { user } = useUser();
+
 	return (
 		<AppShell
 			styles={{
@@ -41,20 +47,12 @@ export default function Shell(props: PropTypes) {
 					<Text>Application navbar</Text>
 				</Navbar>
 			}
-			aside={
-				<MediaQuery smallerThan="sm" styles={{ display: "none" }}>
-					<Aside
-						p="md"
-						hiddenBreakpoint="sm"
-						width={{ sm: 200, lg: 300 }}
-					>
-						<Text>Application sidebar</Text>
-					</Aside>
-				</MediaQuery>
-			}
 			footer={
-				<Footer height={60} p="md">
-					Application footer
+				<Footer className="py-0 flex justify-between items-center" height={50} p="md">
+					<div>
+						<DeafButton />
+					</div>
+					{user && <Text className="text-bayerisch">{user}</Text>}
 				</Footer>
 			}
 			header={
@@ -79,10 +77,27 @@ export default function Shell(props: PropTypes) {
 								mr="xl"
 							/>
 						</MediaQuery>
-						
-							<Text className="text-bayerisch">Application header</Text>
+
+						<div className="flex gap-2 items-center">
+							<img className="h-12" src={logo} alt="" />
+							<div className="flex flex-col gap-0">
+								<Text
+									weight={700}
+									size="lg"
+									className="text-bayerisch"
+								>
+									WebFunk
+								</Text>
+								<Text className="text-bayerisch">
+									Polizei München
+								</Text>
+							</div>
+						</div>
+						<div className="flex gap-2">
+							<NotrufButton />
+							<UserButton />
 							<ThemeSwitch />
-						
+						</div>
 					</div>
 				</Header>
 			}
