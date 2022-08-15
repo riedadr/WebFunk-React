@@ -17,8 +17,6 @@ interface PropTypes {
 }
 
 export default function Shell(props: PropTypes) {
-	console.log(typeof props);
-
 	const theme = useMantineTheme();
 	const [opened, setOpened] = useState(false);
 	return (
@@ -64,6 +62,7 @@ export default function Shell(props: PropTypes) {
 					<div
 						style={{
 							display: "flex",
+							justifyContent: "space-between",
 							alignItems: "center",
 							height: "100%",
 						}}
@@ -80,8 +79,10 @@ export default function Shell(props: PropTypes) {
 								mr="xl"
 							/>
 						</MediaQuery>
-						<Text>Application header</Text>
-						<ThemeSwitch />
+						
+							<Text className="text-bayerisch">Application header</Text>
+							<ThemeSwitch />
+						
 					</div>
 				</Header>
 			}

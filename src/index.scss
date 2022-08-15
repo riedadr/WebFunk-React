@@ -1,3 +1,7 @@
+/* @tailwind base; conflicts with mantine */
+@tailwind components;
+@tailwind utilities;
+
 html {
     font-family: "Arial";
 }
