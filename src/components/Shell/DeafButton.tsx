@@ -1,17 +1,15 @@
 import { ActionIcon } from "@mantine/core";
-import { IconSun, IconVolume, IconVolume3 } from "@tabler/icons";
-import { useState } from "react";
+import { IconVolume, IconVolume3 } from "@tabler/icons";
+import { useChannel } from "../../contexts/channel";
 
 export function DeafButton() {
-	const [deaf, setDeaf] = useState<boolean>(false);
+	const {deaf, toggleDeaf} = useChannel();
 
 	return (
 		<ActionIcon
 			variant={deaf ? "filled" : "outline"}
 			color="blue"
-			onClick={() => {
-				setDeaf(!deaf);
-			}}
+			onClick={() => toggleDeaf()}
 			title="Taubschalten"
 		>
 			{deaf ? <IconVolume3 size={18} /> : <IconVolume size={18} />}

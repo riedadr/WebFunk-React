@@ -9,7 +9,7 @@ interface ChannelTypes {
 
 const ChannelContext = createContext<ChannelTypes | null>(null);
 
-export function useUser() {
+export function useChannel() {
 	return useContext(ChannelContext);
 }
 

@@ -15,6 +15,7 @@ import { UserButton } from "./Shell/UserButton";
 import { NotrufButton } from "./Shell/NotrufButton";
 import { useUser } from "../contexts/user";
 import { DeafButton } from "./Shell/DeafButton";
+import { MuteButton } from "./Shell/MuteButton";
 
 interface PropTypes {
 	children: JSX.Element;
@@ -49,8 +50,9 @@ export default function Shell(props: PropTypes) {
 			}
 			footer={
 				<Footer className="py-0 flex justify-between items-center" height={50} p="md">
-					<div>
+					<div className="flex gap-2">
 						<DeafButton />
+						<MuteButton />
 					</div>
 					{user && <Text className="text-bayerisch">{user}</Text>}
 				</Footer>

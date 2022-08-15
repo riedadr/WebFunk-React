@@ -8,7 +8,7 @@ export function ThemeSwitch() {
 	return (
 		<ActionIcon
 			variant="outline"
-			color={dark ? "yellow" : "blue"}
+			color="yellow"
 			onClick={() => toggleColorScheme()}
 			title="Toggle color scheme"
 		>

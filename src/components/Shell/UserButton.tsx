@@ -58,7 +58,7 @@ export function UserButton() {
 			</Modal>
 			<ActionIcon
 				variant="outline"
-				color="blue"
+				color="green"
 				onClick={() => setOpened(true)}
 				title="Toggle color scheme"
 			>
