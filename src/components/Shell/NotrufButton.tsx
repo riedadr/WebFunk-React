@@ -1,5 +1,5 @@
 import { ActionIcon, Button, Modal } from "@mantine/core";
-import { IconUrgent } from "@tabler/icons";
+import { IconSos } from "@tabler/icons";
 import { useState } from "react";
 import { Notruf } from "../Notruf";
 
@@ -24,7 +24,7 @@ export function NotrufButton() {
 				onClick={() => setOpened(true)}
 				title="Toggle color scheme"
 			>
-				<IconUrgent size={18} />
+				<IconSos size={18} />
 			</ActionIcon>
 		</>
 	);

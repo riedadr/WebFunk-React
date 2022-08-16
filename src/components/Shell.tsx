@@ -8,6 +8,8 @@ import {
 	MediaQuery,
 	Burger,
 	useMantineTheme,
+	Button,
+	Accordion,
 } from "@mantine/core";
 import { ThemeSwitch } from "./Shell/ThemeSwitch";
 import logo from "../assets/images/pp-mue.png";
@@ -16,6 +18,9 @@ import { NotrufButton } from "./Shell/NotrufButton";
 import { useUser } from "../contexts/user";
 import { DeafButton } from "./Shell/DeafButton";
 import { MuteButton } from "./Shell/MuteButton";
+import { IconRadio, IconSearch, IconUrgent } from "@tabler/icons";
+import EAs from "./Channels/EAs";
+import KFDs from "./Channels/KFDs";
 
 interface PropTypes {
 	children: JSX.Element;
@@ -44,12 +49,45 @@ export default function Shell(props: PropTypes) {
 					hiddenBreakpoint="sm"
 					hidden={!opened}
 					width={{ sm: 200, lg: 300 }}
+					style={{ padding: 0 }}
 				>
-					<Text>Application navbar</Text>
+					<Navbar.Section grow>
+						<Text className="p-2">Kanäle</Text>
+						<Accordion defaultValue="EA">
+							<Accordion.Item value="EA">
+								<Accordion.Control icon={<IconRadio />}>
+									Abschnitte
+								</Accordion.Control>
+								<Accordion.Panel>
+									<EAs />
+								</Accordion.Panel>
+							</Accordion.Item>
+							<Accordion.Item value="K">
+								<Accordion.Control icon={<IconSearch />}>
+									KFD
+								</Accordion.Control>
+								<Accordion.Panel>
+									<KFDs />
+								</Accordion.Panel>
+							</Accordion.Item>
+							<Accordion.Item value="Lage">
+								<Accordion.Control icon={<IconUrgent />}>
+									Lage
+								</Accordion.Control>
+								<Accordion.Panel>
+									<EAs />
+								</Accordion.Panel>
+							</Accordion.Item>
+						</Accordion>
+					</Navbar.Section>
 				</Navbar>
 			}
 			footer={
-				<Footer className="py-0 flex justify-between items-center" height={50} p="md">
+				<Footer
+					className="py-0 flex justify-between items-center"
+					height={50}
+					p="md"
+				>
 					<div className="flex gap-2">
 						<DeafButton />
 						<MuteButton />
@@ -104,7 +142,6 @@ export default function Shell(props: PropTypes) {
 				</Header>
 			}
 		>
-			<Text>Resize app to see responsive navbar in action</Text>
 			{props.children}
 		</AppShell>
 	);

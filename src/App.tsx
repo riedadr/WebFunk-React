@@ -7,6 +7,7 @@ import {
 import { useEffect, useState } from "react";
 import { UserProvider } from "./contexts/user";
 import { ChannelProvider } from "./contexts/channel";
+import Shell from "./components/Shell";
 
 export function App(): JSX.Element {
 	const [colorScheme, setColorScheme] = useState<ColorScheme>(
@@ -37,7 +38,9 @@ export function App(): JSX.Element {
 			>
 				<UserProvider>
 					<ChannelProvider>
-						<Home />
+						<Shell>
+							<Home />
+						</Shell>
 					</ChannelProvider>
 				</UserProvider>
 			</MantineProvider>
