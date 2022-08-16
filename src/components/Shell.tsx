@@ -21,12 +21,12 @@ import { MuteButton } from "./Shell/MuteButton";
 import { IconRadio, IconSearch, IconUrgent } from "@tabler/icons";
 import EAs from "./Channels/EAs";
 import KFDs from "./Channels/KFDs";
+import { useChannel } from "../contexts/channel";
+import Channel from "../pages/Channel";
+import Home from "../pages/Home";
 
-interface PropTypes {
-	children: JSX.Element;
-}
 
-export default function Shell(props: PropTypes) {
+export default function Shell() {
 	const theme = useMantineTheme();
 	const [opened, setOpened] = useState(false);
 	const { user } = useUser();
@@ -142,7 +142,13 @@ export default function Shell(props: PropTypes) {
 				</Header>
 			}
 		>
-			{props.children}
+			<Display />
 		</AppShell>
 	);
+}
+
+function Display() {
+	const { channel } = useChannel();
+	if (channel) return <Channel />
+	else return <Home />
 }

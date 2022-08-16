@@ -38,9 +38,7 @@ export function App(): JSX.Element {
 			>
 				<UserProvider>
 					<ChannelProvider>
-						<Shell>
-							<Home />
-						</Shell>
+						<Shell />
 					</ChannelProvider>
 				</UserProvider>
 			</MantineProvider>
